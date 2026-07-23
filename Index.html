@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pencarian Sertifikat PKKMB 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --yellow:#fbbf24; --yellow-deep:#f59e0b; --ink:#1f2937; --muted:#64748b; }
+    * { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; color:var(--ink); font-family:"DM Sans",sans-serif; background:#fffdf5; overflow-x:hidden; }
+    .orb { position:fixed; z-index:-1; width:34rem; height:34rem; border-radius:50%; opacity:.55; }
+    .orb-one { top:-16rem; right:-10rem; background:#fde68a; }
+    .orb-two { bottom:-20rem; left:-12rem; background:#fef3c7; }
+    .page { width:min(100% - 32px,1060px); margin:0 auto; padding:38px 0 28px; }
+    .brand { display:flex; align-items:center; gap:10px; margin-bottom:48px; font-weight:700; letter-spacing:-.02em; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:12px; background:var(--yellow); box-shadow:0 8px 20px rgba(245,158,11,.22); }
+    .brand-mark svg { width:21px; }
+    .hero { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:48px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; margin-bottom:16px; padding:7px 12px; color:#92400e; background:#fef3c7; border-radius:99px; font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+    .eyebrow::before { width:7px; height:7px; background:var(--yellow-deep); border-radius:50%; content:""; }
+    h1 { max-width:620px; margin:0; font-family:"Plus Jakarta Sans",sans-serif; font-size:clamp(2.2rem,5vw,4.35rem); line-height:1.07; letter-spacing:-.06em; }
+    h1 span { color:#d97706; }
+    .lead { max-width:555px; margin:20px 0 0; color:var(--muted); font-size:1.05rem; line-height:1.7; }
+    .search-card { position:relative; padding:30px; background:rgba(255,255,255,.88); border:1px solid rgba(251,191,36,.35); border-radius:24px; box-shadow:0 24px 55px rgba(120,88,20,.11); }
+    .search-card::after { position:absolute; top:-10px; right:25px; width:64px; height:20px; background:var(--yellow); border-radius:99px; content:""; }
+    .search-card h2 { margin:0 0 8px; font-family:"Plus Jakarta Sans",sans-serif; font-size:1.3rem; letter-spacing:-.04em; }
+    .search-card p { margin:0 0 22px; color:var(--muted); font-size:.91rem; line-height:1.5; }
+    label { display:block; margin-bottom:8px; font-size:.84rem; font-weight:700; }
+    .input-wrap { position:relative; }
+    .input-wrap svg { position:absolute; top:50%; left:15px; width:19px; transform:translateY(-50%); color:#94a3b8; }
+    input { width:100%; padding:14px 14px 14px 45px; border:1px solid #e2e8f0; border-radius:12px; outline:none; color:var(--ink); background:#fff; font:inherit; }
+    input:focus { border-color:var(--yellow-deep); box-shadow:0 0 0 4px rgba(251,191,36,.2); }
+    button { display:inline-flex; align-items:center; justify-content:center; gap:9px; width:100%; margin-top:14px; padding:14px; border:0; border-radius:12px; color:#422006; background:var(--yellow); box-shadow:0 10px 20px rgba(245,158,11,.22); cursor:pointer; font:inherit; font-weight:800; }
+    button:hover { background:#f59e0b; transform:translateY(-2px); } button:disabled { cursor:wait; opacity:.7; transform:none; }
+    .result-section { margin-top:56px; }
+    .result-heading { display:flex; align-items:center; gap:12px; margin-bottom:18px; font-family:"Plus Jakarta Sans",sans-serif; font-size:1.15rem; font-weight:800; }
+    .result-heading span { display:grid; place-items:center; width:29px; height:29px; border-radius:9px; background:#fef3c7; color:#b45309; font-family:"DM Sans",sans-serif; font-size:.8rem; }
+    #search-results { min-height:98px; overflow:hidden; border:1px solid #f1f5f9; border-radius:18px; background:rgba(255,255,255,.82); box-shadow:0 10px 30px rgba(15,23,42,.04); }
+    .empty-state,.message { display:grid; place-items:center; min-height:150px; padding:24px; color:var(--muted); text-align:center; line-height:1.6; }
+    .message { color:#92400e; background:#fffbeb; }.loading { display:inline-flex; align-items:center; gap:10px; }
+    .spinner { width:18px; height:18px; border:3px solid #fde68a; border-top-color:#d97706; border-radius:50%; animation:spin .7s linear infinite; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .table-wrap { overflow-x:auto; } table { width:100%; border-collapse:collapse; font-size:.9rem; }
+    th { padding:15px 18px; color:#92400e; background:#fffbeb; font-size:.72rem; letter-spacing:.06em; text-align:left; text-transform:uppercase; white-space:nowrap; }
+    td { padding:16px 18px; border-top:1px solid #f1f5f9; vertical-align:middle; } tr:hover td { background:#fffdf5; } td a { color:#b45309; font-weight:700; }
+    footer { margin-top:54px; color:#94a3b8; font-size:.78rem; text-align:center; } footer a { color:#64748b; font-weight:700; text-decoration:none; }
+    @media (max-width:760px) { .page { width:min(100% - 28px,560px); padding-top:24px; }.brand { margin-bottom:34px; }.hero { grid-template-columns:1fr; gap:38px; }.search-card { padding:26px 20px; }.result-section { margin-top:40px; } }
+  </style>
+</head>
+<body>
+  <div class="orb orb-one"></div><div class="orb orb-two"></div>
+  <main class="page">
+    <div class="brand"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 10.5 12 5l9 5.5-9 5.5-9-5.5Z"/><path d="M7 13v4.4c2.7 1.5 7.3 1.5 10 0V13"/></svg></div>FKIP ULM</div>
+    <section class="hero">
+      <div><div class="eyebrow">PKKMB 2026</div><h1>Cek sertifikatmu, <span>lebih mudah.</span></h1><p class="lead">Masukkan Nomor Induk Mahasiswa (NIM) untuk menemukan data dan sertifikat PKKMB FKIP ULM Anda.</p></div>
+      <div class="search-card">
+        <h2>Temukan sertifikat</h2><p>Gunakan NIM yang terdaftar saat pelaksanaan PKKMB.</p>
+        <form id="search-form">
+          <label for="searchtext">Nomor Induk Mahasiswa</label>
+          <div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="text" id="searchtext" name="searchtext" placeholder="Contoh: 2610xxxx" autocomplete="off" required></div>
+          <button id="search-button" type="submit">Cari data <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+    </section>
+    <section class="result-section" aria-live="polite"><div class="result-heading"><span>01</span>Hasil pencarian</div><div id="search-results"><div class="empty-state">Data sertifikat Anda akan tampil di sini setelah pencarian.</div></div></section>
+    <footer>© Bidang Kemahasiswaan dan Alumni FKIP ULM · <a href="https://wa.me/6281251364143" target="_blank" rel="noopener">Butuh bantuan? Hubungi kami via WhatsApp</a></footer>
+  </main>
+  <script src="Code.js" defer></script>
+</body>
+</html>
